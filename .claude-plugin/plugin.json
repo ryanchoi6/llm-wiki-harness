@@ -1,7 +1,7 @@
 {
   "name": "llm-wiki",
   "description": "Karpathy의 LLM Wiki 패턴 구현. Obsidian vault에 raw 소스를 incremental하게 ingest하고, 위키 기반 질의응답과 건강 점검(lint)을 수행하는 3-에이전트 하네스.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "ryanchoi6",
     "url": "https://github.com/ryanchoi6"

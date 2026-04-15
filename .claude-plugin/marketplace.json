@@ -9,7 +9,7 @@
       "name": "llm-wiki",
       "source": "./",
       "description": "Karpathy의 LLM Wiki 패턴 구현 하네스. Obsidian vault 기반 persistent knowledge base를 LLM이 incremental하게 유지보수한다. ingest / query / lint 3개 operation을 전담 에이전트가 처리.",
-      "version": "0.1.0"
+      "version": "0.1.1"
     }
   ]
 }
