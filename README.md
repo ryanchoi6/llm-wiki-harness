@@ -18,18 +18,21 @@ RAG처럼 매 질문마다 원본을 다시 뒤지는 대신, LLM이 **영속적
 
 1. 프로젝트 루트에서 Claude Code를 연다.
 2. 첫 요청 예: `"이 URL을 위키에 추가해줘 https://example.com/article"`
-3. 오케스트레이터가 vault 부재를 감지하면 **초기화 여부를 묻는다**. 동의하면 `./vault/llm-wiki/` 가 템플릿으로 생성됨.
-4. Obsidian에서 `./vault/llm-wiki/` 를 vault로 열면 graph view로 진행 상황을 볼 수 있다.
+3. 오케스트레이터가 vault를 못 찾으면 **onboarding 대화**로 경로를 묻는다:
+   - `(1)` 기존 vault가 있다 → 절대경로 입력
+   - `(2)` 현재 디렉토리를 vault로 사용 (**권장** — 프로젝트 루트 자체가 Obsidian vault)
+   - `(3)` 하위 디렉토리에 새로 만들기
+4. 선택이 끝나면 플러그인 template이 복사되고, 경로가 프로젝트 `CLAUDE.md`에 자동 기록된다. 다음 세션부터는 묻지 않음.
+5. Obsidian에서 해당 경로를 vault로 열면 graph view로 진행 상황을 볼 수 있다.
 
-### Vault 경로 커스터마이징 (선택)
+### 경로 수동 지정
 
-프로젝트 `CLAUDE.md` 에 다음을 추가:
+onboarding 건너뛰고 싶으면 미리 프로젝트 `CLAUDE.md` 에:
 
 ```markdown
-**Vault 경로**: /absolute/path/to/your/vault
+**Vault 경로**: .
 ```
-
-또는 환경변수 `LLM_WIKI_VAULT` 를 설정.
+(또는 절대/상대 경로). 환경변수 `LLM_WIKI_VAULT` 도 작동.
 
 ## 3가지 Operation
 
@@ -43,14 +46,16 @@ RAG처럼 매 질문마다 원본을 다시 뒤지는 대신, LLM이 **영속적
 
 ## Vault 구조
 
+Vault는 그냥 마크다운 디렉토리. 프로젝트 루트를 그대로 vault로 써도 되고, 하위 폴더로 분리해도 됨.
+
 ```
-vault/llm-wiki/
+<vault>/
 ├── schema.md        # 위키 규약 (LLM이 따르는 단일 기준)
 ├── index.md         # 전체 페이지 카탈로그 (매 ingest마다 재생성)
 ├── log.md           # 연대기 로그 (append-only)
 ├── raw/             # 원본 소스 (immutable — LLM은 읽기만)
 │   └── assets/
-├── summaries/         # 소스별 요약 페이지
+├── summaries/       # 소스별 요약 페이지 (type: summary)
 ├── entities/        # 사람/조직/장소/제품
 ├── concepts/        # 개념·기법·아이디어
 └── syntheses/       # 비교·분석·저장 가치 있는 질문 답변
