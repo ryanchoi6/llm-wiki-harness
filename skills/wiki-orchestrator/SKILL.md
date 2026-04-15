@@ -61,7 +61,7 @@ Vault 절대경로: <Phase 0에서 결정된 경로>
 ## 테스트 시나리오
 
 **정상 (ingest)**: 사용자 "이 URL을 위키에 추가해줘 https://example.com/article"
-→ Phase 1에서 ingest로 분류 → wiki-ingestor 호출 → `sources/article.md` 생성, 관련 entity 페이지 업데이트, index/log 갱신.
+→ Phase 1에서 ingest로 분류 → wiki-ingestor 호출 → `summaries/article.md` 생성, 관련 entity 페이지 업데이트, index/log 갱신.
 
 **정상 (query)**: "Transformer와 RNN의 차이를 위키 내용으로 정리해줘"
 → query 분류 → wiki-querier → citation 있는 답변 + `syntheses/transformer-vs-rnn.md` 저장 제안.

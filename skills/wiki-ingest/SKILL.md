@@ -1,6 +1,6 @@
 ---
 name: wiki-ingest
-description: 새로운 raw 소스(파일, URL, 텍스트)를 읽어 위키에 incremental하게 통합한다. 소스 요약 페이지 생성, 관련 entity/concept 페이지 업데이트·생성, index.md와 log.md 갱신을 한 번에 처리한다. 'raw에 넣어줘', '이 문서 추가해줘', '위키에 정리', 'ingest', '자료 등록', '이 URL 넣어줘' 등의 요청에 반드시 사용. 기존 ingest 결과 재처리/보완 요청 시에도 사용.
+description: 새로운 raw 소스(파일, URL, 텍스트)를 읽어 위키에 incremental하게 통합한다. 요약 페이지(summary page) 생성, 관련 entity/concept 페이지 업데이트·생성, index.md와 log.md 갱신을 한 번에 처리한다. 'raw에 넣어줘', '이 문서 추가해줘', '위키에 정리', 'ingest', '자료 등록', '이 URL 넣어줘' 등의 요청에 반드시 사용. 기존 ingest 결과 재처리/보완 요청 시에도 사용.
 ---
 
 # Wiki Ingest Workflow
@@ -33,13 +33,13 @@ description: 새로운 raw 소스(파일, URL, 텍스트)를 읽어 위키에 in
 
 `index.md`를 읽고 이 소스와 겹칠 법한 엔티티/개념 페이지 목록을 만든다. 해당 페이지들을 실제로 읽어 현재 주장을 파악.
 
-## Step 3: 소스 요약 페이지 작성
+## Step 3: 요약 페이지(summary page) 작성
 
-`sources/<slug>.md` 생성:
+`summaries/<slug>.md` 생성:
 
 ```markdown
 ---
-type: source
+type: summary
 tags: [...]
 created: <today>
 updated: <today>
@@ -107,7 +107,7 @@ sources: [[source-1]], [[source-2]]
 
 ## Step 5: index.md 재생성
 
-실제 파일시스템을 스캔하여 `index.md`의 4개 섹션(Sources/Entities/Concepts/Syntheses)을 다시 쓴다. 각 라인:
+실제 파일시스템을 스캔하여 `index.md`의 4개 섹션(Summaries/Entities/Concepts/Syntheses)을 다시 쓴다. 각 라인:
 `- [[page-name]] — one-line summary (N sources)`
 
 `N sources`는 `sources:` frontmatter 배열 길이.

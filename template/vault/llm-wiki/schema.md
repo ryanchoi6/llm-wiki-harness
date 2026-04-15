@@ -18,7 +18,7 @@ Conventions the LLM follows when maintaining this wiki. Co-evolve this file with
 ```
 raw/          sources as originally captured (immutable)
   assets/     downloaded images
-sources/      one summary page per raw source
+summaries/      one summary page per raw source
 entities/     people, orgs, places, products — anything that can be "about"
 concepts/     ideas, topics, techniques
 syntheses/    comparisons, analyses, user-asked questions worth keeping
@@ -35,7 +35,7 @@ Every wiki page has YAML frontmatter:
 
 ```yaml
 ---
-type: source | entity | concept | synthesis
+type: summary | entity | concept | synthesis
 tags: [tag1, tag2]
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
@@ -50,7 +50,7 @@ external_origin: /absolute/path/outside/vault   # optional; source pages only; p
 Body guidelines:
 - Use `[[Wikilinks]]` for every mention of another wiki page. Obsidian resolves them.
 - Top of body: one-paragraph summary suitable for the index.
-- For `source/` pages: key takeaways + short quote block for load-bearing claims.
+- For `summary` pages: key takeaways + short quote block for load-bearing claims.
 - For `entity`/`concept` pages: definition, attributes, relations, source citations as `[[source-page]]`.
 - For `synthesis` pages: the question being answered, the answer, evidence with citations.
 - When a new source contradicts an existing claim, keep both and add a `## Contradictions` block noting each side + source.
@@ -58,7 +58,7 @@ Body guidelines:
 ## File naming
 
 - Kebab-case, descriptive: `transformer-architecture.md`, `andrej-karpathy.md`.
-- Source pages mirror the source name: `raw/foo.pdf` → `sources/foo.md`.
+- Source pages mirror the source name: `raw/foo.pdf` → `summaries/foo.md`.
 
 ## index.md
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2 — 2026-04-15
+
+### Changed (breaking for existing vaults)
+- Rename `sources/` folder → `summaries/`, and frontmatter `type: source` → `type: summary`. "Sources" was ambiguous with `raw/` originals; per Karpathy's doc, the LLM-written wiki pages are **summaries**. Schema, all agent definitions, all skills, and the template vault have been updated. Existing vaults need to rename their folder and update frontmatter — see the repair note in this release's commits for a one-liner.
+
 ## 0.1.1 — 2026-04-15
 
 ### Fixed

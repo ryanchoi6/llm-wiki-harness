@@ -50,7 +50,7 @@ vault/llm-wiki/
 ├── log.md           # 연대기 로그 (append-only)
 ├── raw/             # 원본 소스 (immutable — LLM은 읽기만)
 │   └── assets/
-├── sources/         # 소스별 요약 페이지
+├── summaries/         # 소스별 요약 페이지
 ├── entities/        # 사람/조직/장소/제품
 ├── concepts/        # 개념·기법·아이디어
 └── syntheses/       # 비교·분석·저장 가치 있는 질문 답변
