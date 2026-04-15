@@ -107,7 +107,7 @@ sources: [[source-1]], [[source-2]]
 
 ## Step 5: index.md 재생성
 
-실제 파일시스템을 스캔하여 `index.md`의 4개 섹션(Summaries/Entities/Concepts/Syntheses)을 다시 쓴다. 각 라인:
+실제 파일시스템을 스캔하여 `index.md`의 6개 섹션(Summaries/Entities/Concepts/Comparisons/Overview/Syntheses)을 다시 쓴다. 각 라인:
 `- [[page-name]] — one-line summary (N sources)`
 
 `N sources`는 `sources:` frontmatter 배열 길이.

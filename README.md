@@ -56,9 +56,11 @@ Vault는 그냥 마크다운 디렉토리. 프로젝트 루트를 그대로 vaul
 ├── raw/             # 원본 소스 (immutable — LLM은 읽기만)
 │   └── assets/
 ├── summaries/       # 소스별 요약 페이지 (type: summary)
-├── entities/        # 사람/조직/장소/제품
-├── concepts/        # 개념·기법·아이디어
-└── syntheses/       # 비교·분석·저장 가치 있는 질문 답변
+├── entities/        # 사람/조직/장소/제품 (type: entity)
+├── concepts/        # 개념·기법·아이디어 (type: concept)
+├── comparisons/     # X vs Y, tradeoff 분석 (type: comparison)
+├── overview/        # 도메인 조망·진입점 맵 (type: overview)
+└── syntheses/       # 다중 소스 종합·분석 (type: synthesis)
 ```
 
 - 모든 페이지에 YAML frontmatter(`type`, `created`, `updated`, `sources`).

@@ -13,7 +13,7 @@ description: 위키 전체의 건강 상태를 점검한다. 모순, stale, orph
 
 ## Step 1: 인덱스 동기화
 
-1. 파일시스템을 스캔하여 4개 폴더(`summaries/`, `entities/`, `concepts/`, `syntheses/`)의 파일 목록을 수집.
+1. 파일시스템을 스캔하여 6개 폴더(`summaries/`, `entities/`, `concepts/`, `comparisons/`, `overview/`, `syntheses/`)의 파일 목록을 수집.
 2. `index.md`와 비교.
 3. 불일치면 `index.md`를 실제 상태로 재생성 (자동 수정).
 

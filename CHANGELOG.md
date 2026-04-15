@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.4 — 2026-04-15
+
+### Added
+- Page types 4 → 6 (Karpathy 원문 반영): `comparison`, `overview` 추가. 기존은 `summary | entity | concept | synthesis`였는데 Karpathy는 "summaries, entity pages, concept pages, comparisons, an overview, a synthesis"를 구분함.
+- Template에 빈 `comparisons/`, `overview/` 폴더 추가.
+- `wiki-querier` 저장 판단 로직 확장: 답변 유형(비교 / 조망 / 종합)에 따라 `comparisons/` / `overview/` / `syntheses/` 중 맞는 폴더로 저장.
+
+### Changed
+- `schema.md`의 type union 확장 + 섹션별 바디 가이드(comparison, overview) 추가.
+- `wiki-query` SKILL Step 4 저장 판단을 유형별 표로 재작성.
+- README vault 구조 섹션 6폴더로 확장.
+
 ## 0.1.3 — 2026-04-15
 
 ### Changed
