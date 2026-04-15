@@ -40,9 +40,12 @@ tags: [tag1, tag2]
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 sources: [[source-page-1]], [[source-page-2]]   # for entity/concept/synthesis
-source_ref: raw/path/to/file                    # for source pages only
+source_ref: raw/path/to/file                    # for source pages only — always a vault-relative path under raw/
+external_origin: /absolute/path/outside/vault   # optional; source pages only; preserves the original location when copied in from outside
 ---
 ```
+
+소스 페이지는 반드시 `raw/` 아래에 **실제 사본**을 가진다. 외부 경로나 URL만 가리키고 끝내면 안 된다.
 
 Body guidelines:
 - Use `[[Wikilinks]]` for every mention of another wiki page. Obsidian resolves them.

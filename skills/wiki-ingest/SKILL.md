@@ -12,14 +12,22 @@ description: 새로운 raw 소스(파일, URL, 텍스트)를 읽어 위키에 in
 - Vault 절대경로는 오케스트레이터가 prompt로 넘겨준다. 이하 모든 경로는 vault 루트 기준.
 - 먼저 `schema.md`를 읽는다 — frontmatter/네이밍/링크 규칙의 유일한 진실.
 
-## Step 1: 소스 확보
+## Step 1: 소스 확보 — raw/에 사본이 반드시 존재해야 한다
+
+**불변 원칙**: 모든 소스는 **vault 내부 `raw/` 아래에 사본이 존재**해야 한다. vault 밖 경로·URL을 단순히 가리키는 포인터로 끝내면 안 된다. raw가 "불변 source of truth"라는 스키마 대전제가 깨지고 vault 재현성이 사라진다.
 
 입력 유형별:
-- **이미 `raw/`에 있는 파일**: 경로 확인 후 읽기.
-- **URL**: WebFetch로 내용 확보 후 `raw/<slug>.md` 로 저장 (원문 유지). 이미지는 `raw/assets/`로 별도 저장 가능하나 필수 아님.
-- **붙여넣기 텍스트**: 제목을 사용자와 합의하거나 첫 헤더에서 추론하여 `raw/<slug>.md` 저장.
+- **이미 `raw/`에 있는 파일**: 경로 확인 후 읽기. 복사 불필요.
+- **URL**: WebFetch로 내용 확보 후 `raw/<slug>.md` 로 저장 (원문 유지). 이미지는 `raw/assets/`.
+- **로컬 외부 경로** (예: `/Users/.../other-project/doc.md`): **반드시 `raw/<slug>.<ext>` 로 복사**한 뒤 진행. 원본 경로는 소스 페이지 frontmatter에 `external_origin: <원본 절대경로>` (선택 필드)로 기록만. `source_ref`는 항상 vault 상대경로 `raw/<slug>.<ext>`.
+- **붙여넣기 텍스트**: 제목을 사용자와 합의하거나 첫 헤더에서 추론하여 `raw/<slug>.md`로 저장.
 
-슬러그는 kebab-case, 최대 ~50자.
+**금지**:
+- `source_ref: external:...` 같은 가상 스킴
+- `source_path:` 등 스키마에 없는 frontmatter 필드 신설 (보조 메타는 `external_origin`만 허용)
+- vault 밖 절대경로를 `source_ref`로 사용
+
+슬러그는 kebab-case, 최대 ~50자. 파일명 충돌 시 suffix(`-v2` 등).
 
 ## Step 2: 관련 기존 페이지 조사
 
